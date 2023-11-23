@@ -1,10 +1,8 @@
+import React from 'react';
+import Calendar from "./components/Calender";
 
-function App() {
-  return (
-    <div className="App">
-      Calender
-    </div>
-  );
-}
+const App = () => {
+    return <Calendar date={new Date()} />;
+};
 
 export default App;
