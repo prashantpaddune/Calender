@@ -1,8 +1,8 @@
-# Calendar Component Project
+# Calendar
 
 ## Overview
 
-This project consists of a reusable React Calendar component. It allows users to view a calendar for a specific month or year, with the ability to highlight a specific date.
+This consists of a reusable React Calendar component. It allows users to view a calendar for a specific month or year, with the ability to highlight a specific date.
 
 ## Features
 
