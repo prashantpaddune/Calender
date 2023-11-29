@@ -3,7 +3,11 @@ import { CalendarWrapper, DayCell, DaysGrid, CurrentDayCell, EmptyCell, WeekDays
 import weekdays from "../../constants/weekdays";
 import { getDaysArray, getFirstDayOfMonth } from "../../utils/getDays";
 
-const Calendar = ({ date }) => {
+type CalendarProps = {
+    date: Date;
+};
+
+const Calendar: React.FC<CalendarProps> = ({ date }) => {
     const month = date.getMonth();
     const year = date.getFullYear();
     const daysArray = getDaysArray(year, month);

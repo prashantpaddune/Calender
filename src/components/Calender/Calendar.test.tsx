@@ -4,7 +4,6 @@ import '@testing-library/jest-dom/extend-expect';
 import Calendar from '.';
 
 describe('Calendar Component Tests', () => {
-
     it('renders the correct month and year', () => {
         const testDate = new Date('2023-05-15');
         render(<Calendar date={testDate} />);
