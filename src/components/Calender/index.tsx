@@ -28,9 +28,9 @@ const Calendar: React.FC<CalendarProps> = ({ date }) => {
     return (
         <CalendarWrapper>
             <MonthYearRow>
-                <button onClick={handlePrevMonth}>&lt;</button>
+                {/*<button onClick={handlePrevMonth}>&lt;</button>*/}
                     {`${currentYear}-${currentMonth + 1}`}
-                <button onClick={handleNextMonth}>&gt;</button>
+                {/*<button onClick={handleNextMonth}>&gt;</button>*/}
             </MonthYearRow>
             <WeekDaysRow>
                 {weekdays.map((day) => (
