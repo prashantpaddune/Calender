@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CalendarWrapper, DayCell, DaysGrid, CurrentDayCell, EmptyCell, WeekDaysRow, MonthYearRow  } from './styles';
 import weekdays from "../../constants/weekdays";
 import { getDaysArray, getFirstDayOfMonth } from "../../utils/getDays";
@@ -8,14 +8,29 @@ type CalendarProps = {
 };
 
 const Calendar: React.FC<CalendarProps> = ({ date }) => {
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    const daysArray = getDaysArray(year, month);
-    const firstDay = getFirstDayOfMonth(year, month);
+    const [currentMonth, setCurrentMonth] = useState(date.getMonth());
+    const [currentYear, setCurrentYear] = useState(date.getFullYear());
+
+    const handleNextMonth = () => {
+        setCurrentMonth((prevMonth) => (prevMonth + 1) % 12);
+        setCurrentYear((prevYear) => (currentMonth === 11 ? prevYear + 1 : prevYear));
+    };
+
+    const handlePrevMonth = () => {
+        setCurrentMonth((prevMonth) => (prevMonth - 1 + 12) % 12);
+        setCurrentYear((prevYear) => (currentMonth === 0 ? prevYear - 1 : prevYear));
+    };
+
+    const daysArray = getDaysArray(currentYear, currentMonth);
+    const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
 
     return (
         <CalendarWrapper>
-            <MonthYearRow>{`${year}-${month + 1}`}</MonthYearRow>
+            <MonthYearRow>
+                <button onClick={handlePrevMonth}>&lt;</button>
+                    {`${currentYear}-${currentMonth + 1}`}
+                <button onClick={handleNextMonth}>&gt;</button>
+            </MonthYearRow>
             <WeekDaysRow>
                 {weekdays.map((day) => (
                     <DayCell key={day}>{day}</DayCell>

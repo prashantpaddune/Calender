@@ -12,7 +12,9 @@ const CalendarWrapper = styled.div`
 `;
 
 const MonthYearRow = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   padding: 15px;
   background-color: #0078d7;
