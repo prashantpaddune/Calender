@@ -23,6 +23,7 @@ const Calendar: React.FC<CalendarProps> = ({ date }) => {
 
     const daysArray = getDaysArray(currentYear, currentMonth);
     const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
+    const emptyCellsEnd = (7 - (firstDay + daysArray.length) % 7);
 
     return (
         <CalendarWrapper>
@@ -44,6 +45,9 @@ const Calendar: React.FC<CalendarProps> = ({ date }) => {
                     day === date.getDate() ?
                         <CurrentDayCell key={day}>{day}</CurrentDayCell> :
                         <DayCell key={day}>{day}</DayCell>
+                ))}
+                {Array.from({ length: emptyCellsEnd }, (_, index) => (
+                    <EmptyCell key={`empty-end-${index}`} />
                 ))}
             </DaysGrid>
         </CalendarWrapper>
